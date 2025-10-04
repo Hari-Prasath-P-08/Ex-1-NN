@@ -1,7 +1,7 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>Hari Prasath P</H3>
+<H3>212223230070</H3>
 <H3>EX. NO.1</H3>
-<H3>DATE</H3>
+<H3>04-10-2025</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
 ## AIM:
@@ -37,11 +37,50 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+```python
+
+import pandas as pd
+from sklearn.preprocessing import StandardScaler, MinMaxScaler, LabelEncoder
+from sklearn.model_selection import train_test_split
+
+
+data = pd.read_csv("Churn_Modelling.csv")
+print(data.head())
+
+print("Missing values:\n", data.isnull().sum())
+print("Duplicate rows:", data.duplicated().sum())
+
+le_gender = LabelEncoder()
+data['Gender'] = le_gender.fit_transform(data['Gender'])  # Male=1, Female=0
+
+data = pd.get_dummies(data, columns=['Geography'], drop_first=True)  
+
+data = data.drop(['RowNumber', 'CustomerId', 'Surname'], axis=1)
+
+print(data.head())
+
+scaler = MinMaxScaler()
+scaled_data = pd.DataFrame(scaler.fit_transform(data), columns=data.columns)
+print(scaled_data.head())
+
+
+X = scaled_data.drop('Exited', axis=1).values   # Features
+y = scaled_data['Exited'].values               # Target
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+print("Length of X_train:", len(X_train))
+print("Length of X_test :", len(X_test))
+
+```
 
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+
+<img width="929" height="653" alt="image" src="https://github.com/user-attachments/assets/94b2f3ff-47ec-4c6b-a705-5a68c0c43fa5" />
+<img width="939" height="509" alt="image" src="https://github.com/user-attachments/assets/c5876af2-c8c1-49e9-81d0-83dd493cce44" />
 
 
 ## RESULT:

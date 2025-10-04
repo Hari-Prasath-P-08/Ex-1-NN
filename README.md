@@ -1,7 +1,7 @@
-<H3>Hari Prasath P</H3>
-<H3>212223230070</H3>
-<H3>EX. NO.1</H3>
-<H3>04-10-2025</H3>
+<H3>Name: Hari Prasath P</H3>
+<H3>Reg. No: 212223230070</H3>
+<H3>EX. NO: 1</H3>
+<H3>Date: 04-10-2025</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
 ## AIM:
